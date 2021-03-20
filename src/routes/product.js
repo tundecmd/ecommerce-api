@@ -2,10 +2,10 @@ const express = require("express");
 const { requireSignin, adminMiddleware } = require("../common-middleware");
 const router = express.Router();
 //const { addProduct, getProducts } = require("../controllers/category");
+const { createProduct } = require("../controllers/product");
 const Product = require("../models/product");
 const multer = require("multer");
 const shortid = require("shortid");
-const { createProduct } = require("../controllers/product");
 const path = require("path");
 
 

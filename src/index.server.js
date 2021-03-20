@@ -4,6 +4,7 @@ const { body } = require("express-validator");
 const app = express();
 // const bodyParser = require("body-parser");
 const mongoose = require('mongoose');
+const path = require("path");
 
 //routes
 const authRoutes = require("./routes/auth");
@@ -47,6 +48,7 @@ app.post('/data', (req, res, next) => {
 });
 
 app.use(express.json())
+app.use('/public', express.static(path.join(__dirname, 'uploads')));
 app.use('/api', authRoutes)
 app.use('/api', adminRoutes)
 app.use('/api', categoryRoutes)
