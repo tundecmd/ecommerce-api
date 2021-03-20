@@ -10,6 +10,7 @@ const authRoutes = require("./routes/auth");
 const adminRoutes = require("./routes/admin/auth");
 const categoryRoutes = require("./routes/category");
 const productRoutes = require("./routes/product");
+const cartRoutes = require("./routes/cart")
 
 
 //environment variable or you can say constants
@@ -23,10 +24,13 @@ mongoose.connect('mongodb+srv://flipcartroot:startnow@cluster0.vqj5m.mongodb.net
                     {   
                         useNewUrlParser: true, 
                         useUnifiedTopology: true,
-                        useCreateIndex: true
+                        useCreateIndex: true,
+                        useFindAndModify: false
                     }
                 ).then(() => {
                     console.log('Database connected!!!');
+                }).catch((e) => {
+                    console.log('Not connected to database ===>', e)
                 })
 
  
@@ -47,8 +51,8 @@ app.use('/api', authRoutes)
 app.use('/api', adminRoutes)
 app.use('/api', categoryRoutes)
 app.use('/api', productRoutes)
-
+app.use('/api', cartRoutes)
 
 app.listen(process.env.PORT, () => {
     console.log(`Server is running on port ${process.env.PORT}`);    
-}); 
+});  
