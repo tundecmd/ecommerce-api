@@ -5,6 +5,7 @@ const app = express();
 // const bodyParser = require("body-parser");
 const mongoose = require('mongoose');
 const path = require("path");
+const cors = require('cors');
 
 //routes
 const authRoutes = require("./routes/auth");
@@ -47,6 +48,7 @@ app.post('/data', (req, res, next) => {
     });
 });
 
+app.use(cors())
 app.use(express.json())
 app.use('/public', express.static(path.join(__dirname, 'uploads')));
 app.use('/api', authRoutes)
@@ -57,4 +59,4 @@ app.use('/api', cartRoutes)
 
 app.listen(process.env.PORT, () => {
     console.log(`Server is running on port ${process.env.PORT}`);    
-});  
+});
