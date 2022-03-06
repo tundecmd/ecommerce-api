@@ -6,14 +6,14 @@ const shortid = require('shortid');
 
 
 exports.signup = (req, res) => {
-    
+
     User.findOne({ email: req.body.email })
-    .exec( async (error, user) => {
-        if (user) {
-            return res.status(400).json({
-                message: 'user already registered'
-            })
-        }
+        .exec( async (error, user) => {
+            if (user) {
+                return res.status(400).json({
+                    message: 'user already registered'
+                })
+            }
 
         const {
             firstName,
@@ -21,7 +21,8 @@ exports.signup = (req, res) => {
             email,
             password
         } = req.body;
-        const hash_password = await bcrypt.hash(password, 10)
+    
+        const hash_password = await bcrypt.hash(password, 10);
         const _user = new User({
             firstName,
             lastName,
@@ -66,8 +67,8 @@ exports.signin = (req, res) => {
                     return res.status(400).json({
                         message: "Invalid Password"
                     })
-                }           
-            
+                }
+
             } else {
                 return res.status(400).json({ message: "Something went wrong" })
             }

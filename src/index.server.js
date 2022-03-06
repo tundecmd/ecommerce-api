@@ -23,9 +23,9 @@ env.config();
 //mongodb+srv://flipcartroot:<password>@cluster0.vqj5m.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
 // getting-started.js
 
-mongoose.connect('mongodb+srv://flipcartroot:startnow@cluster0.vqj5m.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', 
-                    {   
-                        useNewUrlParser: true, 
+mongoose.connect('mongodb+srv://flipcartroot:startnow@cluster0.vqj5m.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+                    {
+                        useNewUrlParser: true,
                         useUnifiedTopology: true,
                         useCreateIndex: true,
                         useFindAndModify: false
@@ -36,7 +36,7 @@ mongoose.connect('mongodb+srv://flipcartroot:startnow@cluster0.vqj5m.mongodb.net
                     console.log('Not connected to database ===>', e)
                 })
 
- 
+
 app.get('/', (req, res, next) => {
     res.status(200).json({
         message: 'Hello from Server'
@@ -60,5 +60,5 @@ app.use('/api', cartRoutes);
 app.use('/api', initialDataRoutes);
 
 app.listen(process.env.PORT, () => {
-    console.log(`Server is running on port ${process.env.PORT}`);    
+    console.log(`Server is running on port ${process.env.PORT}`);
 });
