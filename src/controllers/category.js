@@ -39,7 +39,7 @@ exports.addCategory = (req, res) => {
     const cat = new Category(categoryObj);
     cat.save((error, category) => {
         if (error) {
-            return res.status(400).json({ error })
+            return res.status(500).json({ error })
         }
         if (category) {
             return res.status(201).json({ category });
@@ -51,7 +51,7 @@ exports.getCategories = (req, res) => {
     Category.find({})
         .exec((error, categories) => {
             if (error) {
-                return res.status(400).json({ error })
+                return res.status(500).json({ error })
             }
             if (categories) {
 
@@ -106,6 +106,6 @@ exports.deleteCategories = async (req, res) => {
     if (deletedCategories.length === ids.length) {
         res.status(200).json({message: 'Categories removed'})
     } else {
-        res.status(400).json({message: 'Something went wrong'})
+        res.status(500).json({message: 'Something went wrong'})
     }
 };
