@@ -17,6 +17,7 @@ function createCategories(categories, parentId) {
             name: cate.name,
             slug: cate.slug,
             parentId: cate.parentId,
+            type: cate.type,
             children: createCategories(categories, cate._id)
         })
     }
@@ -93,7 +94,7 @@ exports.updateCategories = async (req, res) => {
         res.status(201).json({ updatedCategory });
     }
 
-    res.status(200).json({body: req.body});
+    // res.status(200).json({body: req.body});
 }
 
 exports.deleteCategories = async (req, res) => {
