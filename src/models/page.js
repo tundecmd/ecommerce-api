@@ -33,7 +33,8 @@ const pageSchema = new mongoose.Schema({
     category: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Category',
-      required: true
+      required: true,
+      unique: true
     },
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
@@ -42,4 +43,4 @@ const pageSchema = new mongoose.Schema({
     }
 }, { timestamps: true })
 
-module.exports = mongoose.model('page', pageSchema); 
+module.exports = mongoose.model('Page', pageSchema); 
