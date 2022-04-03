@@ -85,10 +85,10 @@ exports.createPage = (req, res) => {
 
 exports.getPage = (req, res) => {
   const { category, type } = req.params;
-  console.log('category', category);
-  console.log('type', type);
+  // console.log('category', category);
+  // console.log('type', type);
   if (type === "page") {
-  console.log('inside', category);
+  // console.log('inside', category);
 
     Page.findOne({ category: category }).exec((error, page) => {
       
